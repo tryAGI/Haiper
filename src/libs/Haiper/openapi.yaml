@@ -1,0 +1,434 @@
+openapi: 3.0.3
+info:
+  title: Haiper API
+  version: 1.0.0
+  description: API for Haiper 2.x text-to-video, image-to-video, text-to-image, keyframe conditioning, creation status, creation detail, watermark-free URLs, and cancellation.
+servers:
+  - url: https://api.haiper.ai
+security:
+  - BearerAuth: []
+paths:
+  /v1/jobs/gen2/text2video:
+    post:
+      operationId: createTextToVideo
+      summary: Create a Haiper 2.x text-to-video generation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextToVideoRequest'
+      responses:
+        '200':
+          description: Created generation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewCreation'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/jobs/gen2/image2video:
+    post:
+      operationId: createImageToVideo
+      summary: Animate an image with Haiper 2.x.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageToVideoRequest'
+      responses:
+        '200':
+          description: Created generation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewCreation'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/jobs/gen2/text2image:
+    post:
+      operationId: createTextToImage
+      summary: Create a Haiper 2.x text-to-image generation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextToImageRequest'
+      responses:
+        '200':
+          description: Created generation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewCreation'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/jobs/gen2/afc:
+    post:
+      operationId: createKeyframeConditioning
+      summary: Create a Haiper 2.x keyframe-conditioned video from multiple images.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyframeConditioningRequest'
+      responses:
+        '200':
+          description: Created generation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewCreation'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/jobs/{creation_id}/status:
+    get:
+      operationId: getCreationStatus
+      summary: Get the status of a creation.
+      parameters:
+        - $ref: '#/components/parameters/CreationId'
+      responses:
+        '200':
+          description: Creation status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreationStatus'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/creation/{creation_id}:
+    get:
+      operationId: getCreationDetail
+      summary: Get detail for a completed creation.
+      parameters:
+        - $ref: '#/components/parameters/CreationId'
+      responses:
+        '200':
+          description: Creation detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreationDetail'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/creation/{creation_id}/watermark-free-url:
+    post:
+      operationId: createWatermarkFreeUrl
+      summary: Create a watermark-free URL for a video creation.
+      parameters:
+        - $ref: '#/components/parameters/CreationId'
+      responses:
+        '200':
+          description: Watermark-free URL response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatermarkFreeUrl'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/jobs/{creation_id}/cancel:
+    post:
+      operationId: cancelCreation
+      summary: Cancel a pending creation.
+      parameters:
+        - $ref: '#/components/parameters/CreationId'
+      responses:
+        '200':
+          description: Cancel response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelCreation'
+        '400':
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  parameters:
+    CreationId:
+      name: creation_id
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    TextToVideoRequest:
+      type: object
+      required:
+        - prompt
+      additionalProperties: true
+      properties:
+        is_public:
+          type: boolean
+          description: Whether the generation is public on Haiper.
+        is_enable_prompt_enhancer:
+          type: boolean
+          description: Whether Haiper should enhance the prompt.
+        prompt:
+          type: string
+        negative_prompt:
+          type: string
+        gen_mode:
+          type: string
+          enum:
+            - standard
+            - smooth
+            - enhanced
+        settings:
+          $ref: '#/components/schemas/VideoSettings'
+    ImageToVideoRequest:
+      type: object
+      required:
+        - prompt
+        - config
+      additionalProperties: true
+      properties:
+        is_public:
+          type: boolean
+        is_enable_prompt_enhancer:
+          type: boolean
+        prompt:
+          type: string
+        negative_prompt:
+          type: string
+        gen_mode:
+          type: string
+          enum:
+            - smooth
+            - enhanced
+        config:
+          $ref: '#/components/schemas/ImageToVideoConfig'
+        settings:
+          $ref: '#/components/schemas/VideoSettings'
+    TextToImageRequest:
+      type: object
+      required:
+        - prompt
+      additionalProperties: true
+      properties:
+        is_public:
+          type: boolean
+        prompt:
+          type: string
+        negative_prompt:
+          type: string
+        config:
+          type: object
+          additionalProperties: true
+          properties:
+            image_number:
+              type: integer
+              format: int32
+        settings:
+          $ref: '#/components/schemas/ImageSettings'
+    KeyframeConditioningRequest:
+      type: object
+      required:
+        - prompt
+        - config
+      additionalProperties: true
+      properties:
+        is_public:
+          type: boolean
+        prompt:
+          type: string
+        negative_prompt:
+          type: string
+        config:
+          type: object
+          additionalProperties: true
+          properties:
+            source_images:
+              type: array
+              items:
+                type: string
+            camera_movement:
+              type: string
+        settings:
+          $ref: '#/components/schemas/VideoSettings'
+    ImageToVideoConfig:
+      type: object
+      required:
+        - source_image
+      additionalProperties: true
+      properties:
+        source_image:
+          type: string
+          description: URL or base64-encoded image.
+        camera_movement:
+          type: string
+          enum:
+            - none
+            - pan_right
+            - pan_left
+            - tilt_up
+            - tilt_down
+            - zoom_in
+            - zoom_out
+    VideoSettings:
+      type: object
+      additionalProperties: true
+      properties:
+        seed:
+          type: integer
+          format: int64
+        aspect_ratio:
+          type: string
+          enum:
+            - '21:9'
+            - '16:9'
+            - '9:16'
+            - '3:4'
+            - '4:3'
+            - '1:1'
+        duration:
+          type: integer
+          format: int32
+          enum:
+            - 2
+            - 4
+            - 8
+    ImageSettings:
+      type: object
+      additionalProperties: true
+      properties:
+        seed:
+          type: integer
+          format: int64
+        aspect_ratio:
+          type: string
+        resolution:
+          type: integer
+          format: int32
+    NewCreation:
+      type: object
+      additionalProperties: true
+      required:
+        - status
+      properties:
+        status:
+          type: string
+        value:
+          $ref: '#/components/schemas/NewCreationValue'
+    NewCreationValue:
+      type: object
+      additionalProperties: true
+      properties:
+        generation_id:
+          type: string
+    CreationStatus:
+      type: object
+      additionalProperties: true
+      required:
+        - status
+      properties:
+        status:
+          type: string
+        value:
+          type: object
+          additionalProperties: true
+          properties:
+            status:
+              type: string
+              enum:
+                - pending
+                - processing
+                - post_processing
+                - succeed
+                - failed
+            progress:
+              type: number
+              format: float
+    CreationDetail:
+      type: object
+      additionalProperties: true
+      required:
+        - status
+      properties:
+        status:
+          type: string
+        value:
+          type: object
+          additionalProperties: true
+          properties:
+            creation_id:
+              type: string
+            prompt:
+              type: string
+            type:
+              type: string
+            input_type:
+              type: string
+            output:
+              type: object
+              additionalProperties: true
+            settings:
+              type: object
+              additionalProperties: true
+    WatermarkFreeUrl:
+      type: object
+      additionalProperties: true
+      properties:
+        status:
+          type: string
+        value:
+          type: object
+          additionalProperties: true
+          properties:
+            url:
+              type: string
+              format: uri
+    CancelCreation:
+      type: object
+      additionalProperties: true
+      properties:
+        status:
+          type: string
+        value:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      additionalProperties: true
+      properties:
+        code:
+          type: string
+        message:
+          type: string
