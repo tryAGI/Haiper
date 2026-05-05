@@ -15,5 +15,16 @@ namespace Haiper
             string creationId,
             global::Haiper.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get the status of a creation.
+        /// </summary>
+        /// <param name="creationId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Haiper.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Haiper.AutoSDKHttpResponse<global::Haiper.CreationStatus>> GetCreationStatusAsResponseAsync(
+            string creationId,
+            global::Haiper.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
