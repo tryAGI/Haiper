@@ -52,5 +52,6 @@ namespace Haiper
         public ImageToVideoConfig()
         {
         }
+
     }
 }

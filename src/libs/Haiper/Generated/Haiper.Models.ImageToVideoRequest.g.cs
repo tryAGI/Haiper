@@ -96,5 +96,6 @@ namespace Haiper
         public ImageToVideoRequest()
         {
         }
+
     }
 }
