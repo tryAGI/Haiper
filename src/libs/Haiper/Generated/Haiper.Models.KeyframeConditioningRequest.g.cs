@@ -77,5 +77,6 @@ namespace Haiper
         public KeyframeConditioningRequest()
         {
         }
+
     }
 }

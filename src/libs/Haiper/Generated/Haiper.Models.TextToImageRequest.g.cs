@@ -76,5 +76,6 @@ namespace Haiper
         public TextToImageRequest()
         {
         }
+
     }
 }
