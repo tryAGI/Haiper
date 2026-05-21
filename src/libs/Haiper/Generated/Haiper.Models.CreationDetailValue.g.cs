@@ -84,5 +84,6 @@ namespace Haiper
         public CreationDetailValue()
         {
         }
+
     }
 }

@@ -39,5 +39,6 @@ namespace Haiper
         public WatermarkFreeUrlValue()
         {
         }
+
     }
 }
