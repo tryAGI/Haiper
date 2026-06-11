@@ -40,6 +40,13 @@ using Haiper;
 using var client = new HaiperClient(apiKey);
 ```
 
+### CLI
+
+```bash
+dotnet tool install --global Haiper.CLI --prerelease
+haiper api --help
+```
+
 <!-- EXAMPLES:START -->
 ### Text-to-video
 Create a Haiper 2.x text-to-video generation and receive a generation id.
