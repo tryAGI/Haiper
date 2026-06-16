@@ -102,17 +102,17 @@ internal static partial class CreateKeyframeConditioningCommandApiCommand
                             RequestFile,
                             global::Haiper.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : __requestBase is not null ? __requestBase.IsPublic : default;
+                        var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
                         var prompt = parseResult.GetRequiredValue(Prompt);
-                        var negativePrompt = CliRuntime.WasSpecified(parseResult, NegativePrompt) ? parseResult.GetValue(NegativePrompt) : __requestBase is not null ? __requestBase.NegativePrompt : default;
+                        var negativePrompt = CliRuntime.WasSpecified(parseResult, NegativePrompt) ? parseResult.GetValue(NegativePrompt) : (__requestBase is { } __NegativePromptBaseValue ? __NegativePromptBaseValue.NegativePrompt : default);
                         var config = parseResult.GetRequiredValue(Config);
 
-                        var __settingsBase = __requestBase?.Settings;                        var settingsSeed = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) ? parseResult.GetValue(SettingsOptions.Seed) : __settingsBase is not null ? __settingsBase.Seed : default;
-                        var settingsAspectRatio = CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) ? parseResult.GetValue(SettingsOptions.AspectRatio) : __settingsBase is not null ? __settingsBase.AspectRatio : default;
-                        var settingsDuration = CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration) ? parseResult.GetValue(SettingsOptions.Duration) : __settingsBase is not null ? __settingsBase.Duration : default;
-                        var __settingsSpecified = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) || CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) || CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration);
+                        var __SettingsBase = __requestBase is { } __SettingsBaseValue ? __SettingsBaseValue.Settings : default;                        var settingsSeed = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) ? parseResult.GetValue(SettingsOptions.Seed) : (__SettingsBase is { } __SettingsseedBaseValue ? __SettingsseedBaseValue.Seed : default);
+                        var settingsAspectRatio = CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) ? parseResult.GetValue(SettingsOptions.AspectRatio) : (__SettingsBase is { } __SettingsaspectRatioBaseValue ? __SettingsaspectRatioBaseValue.AspectRatio : default);
+                        var settingsDuration = CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration) ? parseResult.GetValue(SettingsOptions.Duration) : (__SettingsBase is { } __SettingsdurationBaseValue ? __SettingsdurationBaseValue.Duration : default);
+                        var __SettingsSpecified = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) || CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) || CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration);
                         var settings =
-                            __settingsSpecified || __settingsBase is not null
+                            __SettingsSpecified || __SettingsBase is not null
                                 ? new global::Haiper.VideoSettings
                                 {
 	                                Seed = settingsSeed,
@@ -120,7 +120,7 @@ internal static partial class CreateKeyframeConditioningCommandApiCommand
                                 Duration = settingsDuration,
 
                                 }
-                                : __settingsBase;
+                                : __SettingsBase;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
