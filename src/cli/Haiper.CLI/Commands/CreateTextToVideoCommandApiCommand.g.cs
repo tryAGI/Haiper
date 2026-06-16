@@ -112,12 +112,12 @@ internal static partial class CreateTextToVideoCommandApiCommand
                         var negativePrompt = CliRuntime.WasSpecified(parseResult, NegativePrompt) ? parseResult.GetValue(NegativePrompt) : (__requestBase is { } __NegativePromptBaseValue ? __NegativePromptBaseValue.NegativePrompt : default);
                         var genMode = CliRuntime.WasSpecified(parseResult, GenMode) ? parseResult.GetValue(GenMode) : (__requestBase is { } __GenModeBaseValue ? __GenModeBaseValue.GenMode : default);
 
-                        var __settingsBase = __requestBase is { } __SettingsBaseValue ? __SettingsBaseValue.Settings : default;                        var settingsSeed = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) ? parseResult.GetValue(SettingsOptions.Seed) : (__settingsBase is { } __SettingsseedBaseValue ? __SettingsseedBaseValue.Seed : default);
-                        var settingsAspectRatio = CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) ? parseResult.GetValue(SettingsOptions.AspectRatio) : (__settingsBase is { } __SettingsaspectRatioBaseValue ? __SettingsaspectRatioBaseValue.AspectRatio : default);
-                        var settingsDuration = CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration) ? parseResult.GetValue(SettingsOptions.Duration) : (__settingsBase is { } __SettingsdurationBaseValue ? __SettingsdurationBaseValue.Duration : default);
-                        var __settingsSpecified = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) || CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) || CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration);
+                        var __SettingsBase = __requestBase is { } __SettingsBaseValue ? __SettingsBaseValue.Settings : default;                        var settingsSeed = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) ? parseResult.GetValue(SettingsOptions.Seed) : (__SettingsBase is { } __SettingsseedBaseValue ? __SettingsseedBaseValue.Seed : default);
+                        var settingsAspectRatio = CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) ? parseResult.GetValue(SettingsOptions.AspectRatio) : (__SettingsBase is { } __SettingsaspectRatioBaseValue ? __SettingsaspectRatioBaseValue.AspectRatio : default);
+                        var settingsDuration = CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration) ? parseResult.GetValue(SettingsOptions.Duration) : (__SettingsBase is { } __SettingsdurationBaseValue ? __SettingsdurationBaseValue.Duration : default);
+                        var __SettingsSpecified = CliRuntime.WasSpecified(parseResult, SettingsOptions.Seed) || CliRuntime.WasSpecified(parseResult, SettingsOptions.AspectRatio) || CliRuntime.WasSpecified(parseResult, SettingsOptions.Duration);
                         var settings =
-                            __settingsSpecified || __settingsBase is not null
+                            __SettingsSpecified || __SettingsBase is not null
                                 ? new global::Haiper.VideoSettings
                                 {
 	                                Seed = settingsSeed,
@@ -125,7 +125,7 @@ internal static partial class CreateTextToVideoCommandApiCommand
                                 Duration = settingsDuration,
 
                                 }
-                                : __settingsBase;
+                                : __SettingsBase;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
