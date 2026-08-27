@@ -4,28 +4,28 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreationStatusValueStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PostProcessing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Processing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Succeed,
     }

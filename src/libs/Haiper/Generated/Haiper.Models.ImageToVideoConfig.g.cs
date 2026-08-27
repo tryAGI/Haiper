@@ -4,7 +4,7 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ImageToVideoConfig
     {
@@ -16,7 +16,7 @@ namespace Haiper
         public required string SourceImage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("camera_movement")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Haiper.JsonConverters.ImageToVideoConfigCameraMovementJsonConverter))]

@@ -20,7 +20,7 @@ namespace Haiper.JsonConverters
                     {
                         return global::Haiper.TextToVideoRequestGenModeExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

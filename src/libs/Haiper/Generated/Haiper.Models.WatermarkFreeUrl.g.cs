@@ -4,18 +4,18 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class WatermarkFreeUrl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         public global::Haiper.WatermarkFreeUrlValue? Value { get; set; }

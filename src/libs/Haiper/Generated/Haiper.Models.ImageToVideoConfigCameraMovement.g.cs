@@ -4,36 +4,36 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ImageToVideoConfigCameraMovement
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PanLeft,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PanRight,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TiltDown,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TiltUp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZoomIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZoomOut,
     }

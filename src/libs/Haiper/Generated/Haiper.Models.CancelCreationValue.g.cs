@@ -4,7 +4,7 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CancelCreationValue
     {

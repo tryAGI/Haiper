@@ -4,16 +4,16 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ImageToVideoRequestGenMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Enhanced,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Smooth,
     }

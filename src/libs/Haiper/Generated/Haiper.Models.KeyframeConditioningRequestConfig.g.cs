@@ -4,18 +4,18 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class KeyframeConditioningRequestConfig
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source_images")]
         public global::System.Collections.Generic.IList<string>? SourceImages { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("camera_movement")]
         public string? CameraMovement { get; set; }
