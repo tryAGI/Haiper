@@ -4,20 +4,20 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TextToVideoRequestGenMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Enhanced,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Smooth,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Standard,
     }

@@ -4,7 +4,7 @@
 namespace Haiper
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TextToVideoRequest
     {
@@ -21,27 +21,27 @@ namespace Haiper
         public bool? IsEnablePromptEnhancer { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Prompt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("negative_prompt")]
         public string? NegativePrompt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gen_mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Haiper.JsonConverters.TextToVideoRequestGenModeJsonConverter))]
         public global::Haiper.TextToVideoRequestGenMode? GenMode { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
         public global::Haiper.VideoSettings? Settings { get; set; }

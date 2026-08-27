@@ -132,7 +132,7 @@ namespace Haiper
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Haiper.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
