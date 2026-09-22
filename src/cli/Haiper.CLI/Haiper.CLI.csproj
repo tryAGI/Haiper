@@ -8,6 +8,7 @@
     <PackAsTool>true</PackAsTool>
     <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
     <PackageId>Haiper.CLI</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <ToolCommandName>haiper</ToolCommandName>
     <UserSecretsId>Haiper.CLI</UserSecretsId>
