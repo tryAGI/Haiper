@@ -68,6 +68,8 @@ internal static partial class CreateKeyframeConditioningCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-keyframe-conditioning", @"Create a Haiper 2.x keyframe-conditioned video from multiple images.");
@@ -140,6 +142,7 @@ internal static partial class CreateKeyframeConditioningCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

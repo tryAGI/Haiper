@@ -78,6 +78,8 @@ internal static partial class CreateImageToVideoCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-image-to-video", @"Animate an image with Haiper 2.x.");
@@ -156,6 +158,7 @@ internal static partial class CreateImageToVideoCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

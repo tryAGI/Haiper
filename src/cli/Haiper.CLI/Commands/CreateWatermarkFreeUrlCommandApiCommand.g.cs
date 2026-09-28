@@ -33,6 +33,8 @@ internal static partial class CreateWatermarkFreeUrlCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-watermark-free-url", @"Create a watermark-free URL for a video creation.");
@@ -58,6 +60,7 @@ internal static partial class CreateWatermarkFreeUrlCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

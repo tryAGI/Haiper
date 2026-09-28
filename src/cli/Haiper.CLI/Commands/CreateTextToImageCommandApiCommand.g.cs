@@ -72,6 +72,8 @@ internal static partial class CreateTextToImageCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-text-to-image", @"Create a Haiper 2.x text-to-image generation.");
@@ -129,6 +131,7 @@ internal static partial class CreateTextToImageCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -71,6 +71,8 @@ internal static partial class CreateTextToVideoCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-text-to-video", @"Create a Haiper 2.x text-to-video generation.");
@@ -146,6 +148,7 @@ internal static partial class CreateTextToVideoCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
