@@ -35,9 +35,9 @@ internal static partial class CreateWatermarkFreeUrlCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-watermark-free-url", @"Create a watermark-free URL for a video creation.");
+        var command = new Command(commandName ?? @"create-watermark-free-url", @"Create a watermark-free URL for a video creation.");
                         command.Arguments.Add(CreationId);
 
 

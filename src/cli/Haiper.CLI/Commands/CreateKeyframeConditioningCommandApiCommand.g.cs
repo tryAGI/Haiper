@@ -70,9 +70,9 @@ internal static partial class CreateKeyframeConditioningCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-keyframe-conditioning", @"Create a Haiper 2.x keyframe-conditioned video from multiple images.");
+        var command = new Command(commandName ?? @"create-keyframe-conditioning", @"Create a Haiper 2.x keyframe-conditioned video from multiple images.");
                         command.Options.Add(IsPublic);
                         command.Options.Add(Prompt);
                         command.Options.Add(NegativePrompt);

@@ -35,9 +35,9 @@ internal static partial class CancelCreationCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"cancel-creation", @"Cancel a pending creation.");
+        var command = new Command(commandName ?? @"cancel-creation", @"Cancel a pending creation.");
                         command.Arguments.Add(CreationId);
 
 

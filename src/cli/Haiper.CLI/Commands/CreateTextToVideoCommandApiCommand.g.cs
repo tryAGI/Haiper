@@ -73,9 +73,9 @@ internal static partial class CreateTextToVideoCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-text-to-video", @"Create a Haiper 2.x text-to-video generation.");
+        var command = new Command(commandName ?? @"create-text-to-video", @"Create a Haiper 2.x text-to-video generation.");
                         command.Options.Add(IsPublic);
                         command.Options.Add(IsEnablePromptEnhancer);
                         command.Options.Add(Prompt);

@@ -74,9 +74,9 @@ internal static partial class CreateTextToImageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-text-to-image", @"Create a Haiper 2.x text-to-image generation.");
+        var command = new Command(commandName ?? @"create-text-to-image", @"Create a Haiper 2.x text-to-image generation.");
                         command.Options.Add(IsPublic);
                         command.Options.Add(Prompt);
                         command.Options.Add(NegativePrompt);

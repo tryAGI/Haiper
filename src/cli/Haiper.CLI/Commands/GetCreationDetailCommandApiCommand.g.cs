@@ -35,9 +35,9 @@ internal static partial class GetCreationDetailCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-creation-detail", @"Get detail for a completed creation.");
+        var command = new Command(commandName ?? @"get-creation-detail", @"Get detail for a completed creation.");
                         command.Arguments.Add(CreationId);
 
 

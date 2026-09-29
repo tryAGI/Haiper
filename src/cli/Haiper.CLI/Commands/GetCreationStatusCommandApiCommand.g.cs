@@ -35,9 +35,9 @@ internal static partial class GetCreationStatusCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-creation-status", @"Get the status of a creation.");
+        var command = new Command(commandName ?? @"get-creation-status", @"Get the status of a creation.");
                         command.Arguments.Add(CreationId);
 
 
