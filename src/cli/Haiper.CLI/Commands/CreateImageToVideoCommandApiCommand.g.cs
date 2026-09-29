@@ -80,9 +80,9 @@ internal static partial class CreateImageToVideoCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-image-to-video", @"Animate an image with Haiper 2.x.");
+        var command = new Command(commandName ?? @"create-image-to-video", @"Animate an image with Haiper 2.x.");
                         command.Options.Add(IsPublic);
                         command.Options.Add(IsEnablePromptEnhancer);
                         command.Options.Add(Prompt);
