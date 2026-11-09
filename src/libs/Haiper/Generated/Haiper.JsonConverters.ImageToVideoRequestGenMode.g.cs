@@ -18,7 +18,7 @@ namespace Haiper.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Haiper.ImageToVideoRequestGenModeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Haiper.ImageToVideoRequestGenModeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Haiper.ImageToVideoRequestGenMode.");
                     }
 
                     break;
